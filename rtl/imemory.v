@@ -9,9 +9,9 @@ module imemory #(parameter WIDTH = 8, AWIDTH = 32, DWIDTH = 32)(
 	reg [7:0] imem [(2**26)-1:0];
 	initial begin
 		//R-TYPE
-		//{imem[3],imem[2],imem[1],imem[0]}        =	 32'h0041e5b3; //or x11 x3 x4 => x3=3, x4=4, x11=7
-		//{imem[7],imem[6],imem[5],imem[4]}        =	 32'h00208433; //add x8 x1 x2 => x1=1, x2=2, x8=3
-		//{imem[11],imem[10],imem[9],imem[8]}      =	 32'h00317533; //and x10 x2 x3 => x2=2, x3=3, x10=2
+		{imem[3],imem[2],imem[1],imem[0]}        =	 32'h0041e5b3; //or x11 x3 x4 => x3=3, x4=4, x11=7
+		{imem[7],imem[6],imem[5],imem[4]}        =	 32'h00208433; //add x8 x1 x2 => x1=1, x2=2, x8=3
+		{imem[11],imem[10],imem[9],imem[8]}      =	 32'h00317533; //and x10 x2 x3 => x2=2, x3=3, x10=2
 		{imem[15],imem[14],imem[13],imem[12]}    =	 32'h404404b3; //sub x9 x8 x4 => x8=3, x4=4, x9=-1
 		{imem[19],imem[18],imem[17],imem[16]}    =	 32'h00414433; //xor x8 x2 x4 => x2=2, x4=4, x8=6
 		{imem[23],imem[22],imem[21],imem[20]}    =	 32'h00412433; //slt x8 x2 x4 => x2=2, x4=4, x8=0
@@ -62,27 +62,7 @@ module imemory #(parameter WIDTH = 8, AWIDTH = 32, DWIDTH = 32)(
 		//U-TYPE
 		{imem[143],imem[142],imem[141],imem[140]} 	 = 	 32'h1E2401B7; //lui x3 123456 => x3=123456
 		{imem[147],imem[146],imem[145],imem[144]}        =	 32'h6F7E3197; //auipc x3 456675 => x3=456675
-
-		//FACTORIAL TESTING
-		//{imem[3],imem[2],imem[1],imem[0]}        =	 32'h000000B3;
-		//{imem[7],imem[6],imem[5],imem[4]}        =	 32'h00500293;
-		//{imem[11],imem[10],imem[9],imem[8]}      =	 32'h00100313;
-		//{imem[15],imem[14],imem[13],imem[12]}    =	 32'h00500133;
-		//{imem[19],imem[18],imem[17],imem[16]}    =	 32'h40610133;
-		//{imem[23],imem[22],imem[21],imem[20]}    =	 32'h000101B3;
-		//{imem[27],imem[26],imem[25],imem[24]}    =	 32'h406181B3;
-		//{imem[31],imem[30],imem[29],imem[28]}    =	 32'h005080B3;
-		//{imem[35],imem[34],imem[33],imem[32]}    =	 32'hFE019CE3;
-		//{imem[39],imem[38],imem[37],imem[36]}    =	 32'h001002B3;
-		//{imem[43],imem[42],imem[41],imem[40]}    =	 32'h00100533;
-		//{imem[47],imem[46],imem[45],imem[44]}    =	 32'h000000B3;
-		//{imem[51],imem[50],imem[49],imem[48]}    =	 32'hFE6110E3;
-
-		//PRIME-NUMBER PROGRAM TESTING
-		//{imem[3],imem[2],imem[1],imem[0]} = 32'h0020C463;
-		//{imem[7],imem[6],imem[5],imem[4]} = 32'h0080006F;
-		//{imem[11],imem[10],imem[9],imem[8]} = 32'h002000B3;
-		//{imem[15],imem[14],imem[13],imem[12]} = 32'h00000033;
+		
 	end
 	assign instr = {imem[pc+3],imem[pc+2],imem[pc+1],imem[pc+0]};
 endmodule
