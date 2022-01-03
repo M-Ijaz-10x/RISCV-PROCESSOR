@@ -4,18 +4,18 @@ module IDE #(parameter WIDTH = 5)(
 	input clk, rst,
 
 	//INPUTS TO THE IDE
-	input [3:0] ALUSel,
-	input [1:0] BSel,
-	input [2:0] ILoad,
-	input [1:0] WBSel,
-	input RegWEn,
-	input MemRW,
-	input PCSel,
-	input [1:0] ASel,
-	input BrUn,
+	input [3:0] ALUSel_D,
+	input [1:0] BSel_D,
+	input [2:0] ILoad_D,
+	input [1:0] WBSel_D,
+	input RegWEn_D,
+	input MemRW_D,
+	input PCSel_D,
+	input [1:0] ASel_D,
+	input BrUn_D,
 
 	//OUTPUTS FROM THE IDE
-	output reg [WIDTH-1:0] ALUSelE,
+	output reg [WIDTH-2:0] ALUSelE,
 	output reg [1:0] BSelE,
 	output reg [2:0] ILoadE,
 	output reg [1:0] WBSelE,
@@ -39,15 +39,15 @@ module IDE #(parameter WIDTH = 5)(
 			BrUnE   <= 32'h0;
 		end
 		else begin
-			ALUSelE <= ALUSel;
-			BSelE   <= BSel;
-			ILoadE  <= ILoad;
-			WBSelE  <= WBSel;
-			RegWEnE <= RegWEn;
-			MemRWE  <= MemRW;
-			PCSelE  <= PCSel;
-			ASelE   <= ASel;
-			BrUnE   <= BrUn;
+			ALUSelE <= ALUSel_D;
+			BSelE   <= BSel_D;
+			ILoadE  <= ILoad_D;
+			WBSelE  <= WBSel_D;
+			RegWEnE <= RegWEn_D;
+			MemRWE  <= MemRW_D;
+			PCSelE  <= PCSel_D;
+			ASelE   <= ASel_D;
+			BrUnE   <= BrUn_D;
 		end
 	end
 endmodule
